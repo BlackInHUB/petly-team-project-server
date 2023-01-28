@@ -1,6 +1,6 @@
 const User = require('../../models/auth/userModel');
 const services = require('../../services/auth');
-const {ConflictError} = require('../../helpers/errors');
+const {errors} = require('../../helpers');
 const gravatar = require('gravatar');
 
 const register = async (req, res) => {
@@ -9,7 +9,7 @@ const register = async (req, res) => {
     const user = await User.findOne({email});
 
     if (user) {
-        throw new ConflictError('Email in use!');
+        throw new errors.ConflictError('Email in use!');
     };
 
     const avatarUrl = gravatar.url(email);
