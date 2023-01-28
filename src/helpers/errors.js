@@ -33,10 +33,12 @@ class ConflictError extends BaseError {
     };
 };
 
-module.exports = {
+const errors = {
     BaseError,
     UnauthorizedError,
     ForbiddenError,
     NotFoundError,
     ConflictError
-};
+}
+
+module.exports = errors;
