@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -9,7 +11,8 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true
+        unique: true,
+        match: emailRegexp
     },
     password: {
         type: String,
@@ -30,8 +33,12 @@ const userSchema = new mongoose.Schema({
     },
     token: {
         type: String,
+    },
+    favorites: {
+        type: Array,
+        default: []
     }
-});
+}, {versionKey: false});
 
 userSchema.pre('save', async function() {
     if (this.isNew) {

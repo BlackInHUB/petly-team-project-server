@@ -1,5 +1,5 @@
 const { errors } = require('../../helpers');
-const User = require('../../models/auth/userModel');
+const {User} = require('../../models');
 const bcrypt = require('bcrypt');
 const services = require('../../services/auth');
 

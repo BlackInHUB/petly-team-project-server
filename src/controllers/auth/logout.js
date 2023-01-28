@@ -2,21 +2,22 @@ const { errors } = require('../../helpers');
 const {User} = require('../../models');
 const services = require('../../services/auth');
 
-const update = async (req, res) => {
+const logout = async (req, res) => {
     const {_id} = req.user;
+
+    console.log(req.user);
 
     const user = await User.findById(_id);
 
     if (!user) {
-        throw new errors.UnauthorizedError('You need to log in!')
+        throw new errors.UnauthorizedError('You need to log in!');
     };
 
-    await services.update(_id, req.body);
+    await services.logout(_id);
 
     res.status(200).json({
-        message: 'User updated',
-        user: req.body
-    })
+        message: 'Logout success'
+    });
 };
 
-module.exports = update;
+module.exports = logout;

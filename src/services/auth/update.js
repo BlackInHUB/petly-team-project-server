@@ -1,4 +1,4 @@
-const User = require('../../models/auth/userModel');
+const {User} = require('../../models');
 
 const update = async (userId, body) => {
     return await User.findByIdAndUpdate(userId, body, {new: true});

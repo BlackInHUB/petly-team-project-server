@@ -1,4 +1,4 @@
-const User = require('../../models/auth/userModel');
+const {User} = require('../../models');
 const services = require('../../services/auth');
 const {errors} = require('../../helpers');
 const gravatar = require('gravatar');
