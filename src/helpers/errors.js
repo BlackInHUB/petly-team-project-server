@@ -39,6 +39,6 @@ const errors = {
     ForbiddenError,
     NotFoundError,
     ConflictError
-};
+}
 
 module.exports = errors;

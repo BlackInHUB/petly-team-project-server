@@ -1,9 +1,11 @@
-const errors = require('./errors');
-const errorHandler = require('./errorHandler');
 const asyncWrapper = require('./asyncWrapper');
+const errorHandler = require('./errorHandler');
+const errors = require('./errors');
+const handleMongooseError = require("./handleMongooseError");
 
 module.exports = {
-    errors,
+    asyncWrapper,
     errorHandler,
-    asyncWrapper
-};
+    errors,
+    handleMongooseError,
+}
