@@ -4,7 +4,10 @@ const getAll = async(req, res) => {
     const { page = 1, limit = 6 } = req.query;
     console.log(page, limit)
     const skip = (page - 1) * limit;
-    const news = await News.find({}, "-createdAt -updatedAt", { skip, limit }).sort({ date: -1 })
+    const news = await News.find({}) 
+        .skip(skip) 
+        .limit(limit) 
+        .sort({date: -1});
     
     res.json(news)
 }
