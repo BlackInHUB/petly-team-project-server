@@ -14,7 +14,7 @@ const newsSchema = new Schema({
     date: {
         type: String,
     },
-}, { versionKey: false, timestamps: true });
+}, { versionKey: false });
 
 newsSchema.post("save", handleMongooseError);
 
