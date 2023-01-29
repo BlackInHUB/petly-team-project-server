@@ -17,14 +17,14 @@ class ForbiddenError extends BaseError {
         super(message);
         this.status = 403;
     };
-}
+};
 
 class NotFoundError extends BaseError {
     constructor(message) {
         super(message);
         this.status = 404;
     };
-}
+};
 
 class ConflictError extends BaseError {
     constructor(message) {

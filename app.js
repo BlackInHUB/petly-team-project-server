@@ -4,6 +4,7 @@ const morgan = require('morgan');
 require("dotenv").config()
 
 const errorHandler = require('./src/helpers/errorHandler');
+const {authRouter} = require('./src/routes/api/authRouter');
 
 const newsRouter = require("./src/routes/api/news")
 const friendsRouter = require("./src/routes/api/friends")
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(morgan('tiny'));
 
+app.use('/api/auth', authRouter);
 app.use("/api/news", newsRouter);
 app.use("/api/friends", friendsRouter);
 
