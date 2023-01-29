@@ -1,5 +1,7 @@
-const authValidation = require('./authValidation');
+const authMiddleware = require('./authMiddleware');
+const uploadMiddleware = require('./uploadMiddleware');
 
 module.exports = {
-    authValidation
+    authMiddleware,
+    uploadMiddleware
 };

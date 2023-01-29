@@ -8,4 +8,5 @@ module.exports = {
     errorHandler,
     errors,
     handleMongooseError,
-}
+};
+

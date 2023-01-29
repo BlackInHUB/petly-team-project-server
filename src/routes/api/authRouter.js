@@ -2,14 +2,22 @@ const express = require('express');
 const router = new express.Router();
 
 const {asyncWrapper} = require('../../helpers');
-const {authValidation} = require('../../middlewares');
+const {authMiddleware, uploadMiddleware} = require('../../middlewares');
 const ctrls = require('../../controllers/auth');
 
-router.post('/register', asyncWrapper(ctrls.register));
+router.post('/register',
+    uploadMiddleware.single('avatar'),
+    asyncWrapper(ctrls.register));
+
 router.post('/login', asyncWrapper(ctrls.login));
-router.patch('/update', authValidation, asyncWrapper(ctrls.update));
-router.get('/logout', authValidation, asyncWrapper(ctrls.logout));
-router.get('/current', authValidation, asyncWrapper(ctrls.current));
+
+router.patch('/update', authMiddleware,
+    uploadMiddleware.single('avatar'),
+    asyncWrapper(ctrls.update));
+
+router.get('/logout', authMiddleware, asyncWrapper(ctrls.logout));
+
+router.get('/current', authMiddleware, asyncWrapper(ctrls.current));
 
 module.exports = {authRouter: router};
 

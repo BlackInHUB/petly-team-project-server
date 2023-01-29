@@ -2,7 +2,7 @@ const {User} = require('../models');
 const jwt = require('jsonwebtoken');
 const { errors } = require('../helpers');
 
-const authValidation = async (req, res, next) => {
+const authMiddleware = async (req, res, next) => {
     const {authorization = ''} = req.headers;
     const [tokenType, token] = authorization.split(' ');
 
@@ -25,4 +25,4 @@ const authValidation = async (req, res, next) => {
     }
 };
 
-module.exports = authValidation;
+module.exports = authMiddleware;

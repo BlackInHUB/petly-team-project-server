@@ -18,18 +18,21 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    birthdat: {
+    birthday: {
         type: String,
+        default: '01-01-1900'
     },
     phone: {
         type: String,
+        default: '+380000000000'
     },
     city: {
         type: String,
+        default: ''
     },
     avatarUrl: {
         type: String,
-        required: true
+        default: 'http://res.cloudinary.com/dazfphdfk/image/upload/v1674989096/avatar/f7fe99ee-38e2-4d97-8949-ede72af1d996-noAvatar.png.png'
     },
     token: {
         type: String,
