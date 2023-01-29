@@ -19,5 +19,5 @@ router.get('/logout', authMiddleware, asyncWrapper(ctrls.logout));
 
 router.get('/current', authMiddleware, asyncWrapper(ctrls.current));
 
-module.exports = {authRouter: router};
+module.exports = router;
 

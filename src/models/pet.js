@@ -19,7 +19,7 @@ const petSchema = new mongoose.Schema({
     },
     photoUrl: {
         type: String,
-        default: 'http://res.cloudinary.com/dazfphdfk/image/upload/v1674989096/avatar/f7fe99ee-38e2-4d97-8949-ede72af1d996-noAvatar.png.png'
+        default: ''
     }
 }, {versionKey: false});
 
