@@ -21,7 +21,7 @@ const authMiddleware = async (req, res, next) => {
         req.user = user;
         next();
     } catch (error) {
-        next(new errors.BaseError('Something goes wrong, try again'))
+        next(new errors.UnauthorizedError('You need to log in!'))
     }
 };
 
