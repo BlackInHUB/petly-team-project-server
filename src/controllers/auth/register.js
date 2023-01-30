@@ -14,7 +14,7 @@ const register = async (req, res) => {
 
     if (req.file) {
         const {path, fieldname, filename} = req.file;
-        const {url: avatarUrl} = await cloudUpload(path, fieldname, filename)
+        const {url: avatarUrl} = await cloudUpload(path, fieldname, filename);
 
         const result = await services.register({...req.body, avatarUrl});
 
