@@ -3,7 +3,11 @@ const mongoose = require('mongoose');
 const petSchema = new mongoose.Schema({
     name: {
         type: String,
-        default: ''
+        required: true,
+    },
+    type: {
+        type: String,
+        required: true
     },
     birthday: {
         String,
@@ -19,7 +23,11 @@ const petSchema = new mongoose.Schema({
     },
     photoUrl: {
         type: String,
-        default: 'http://res.cloudinary.com/dazfphdfk/image/upload/v1674989096/avatar/f7fe99ee-38e2-4d97-8949-ede72af1d996-noAvatar.png.png'
+        default: 'http://res.cloudinary.com/dazfphdfk/image/upload/v1675066555/avatar/07fbd5b5-dce0-4641-b3e0-c65688f7b282-noPetPhoto.png'
+    },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 }, {versionKey: false});
 

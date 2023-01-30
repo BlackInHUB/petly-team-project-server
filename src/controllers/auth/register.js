@@ -14,7 +14,7 @@ const register = async (req, res) => {
 
     if (req.file) {
         const {path, fieldname, filename} = req.file;
-        const {url: avatarUrl} = await cloudUpload(path, fieldname, filename)
+        const {url: avatarUrl} = await cloudUpload(path, fieldname, filename);
 
         const result = await services.register({...req.body, avatarUrl});
 
@@ -46,7 +46,7 @@ const register = async (req, res) => {
     res.status(201).json({
         message: 'User created.',
         user: {
-            id: result._id,
+            _id: result._id,
             username: result.username,
             email: result.email,
             city: result.city,
