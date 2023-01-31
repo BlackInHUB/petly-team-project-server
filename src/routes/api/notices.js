@@ -16,4 +16,6 @@ router.get('/:id', asyncWrapper(ctrls.getOne));
 
 router.delete('/:id', authMiddleware, asyncWrapper(ctrls.remove));
 
+router.get('/by/user', authMiddleware, asyncWrapper(ctrls.getOwn));
+
 module.exports = router;
