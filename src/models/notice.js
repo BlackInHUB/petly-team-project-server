@@ -38,8 +38,8 @@ const noticeSchema = new mongoose.Schema({
     },
     category: {
         type: String,
-        enum: ['sell', 'lost/found', 'in good hands'],
-        required: [true, 'Must be one of "sell", "lost/found", "in good hands"']
+        enum: ['sell', 'lost-found', 'for-free'],
+        required: [true, 'Must be one of "sell", "lost-found", "for-free"']
     },
     comments: {
         type: String,
