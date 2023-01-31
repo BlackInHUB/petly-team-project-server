@@ -10,7 +10,7 @@ router.post('/',
     uploadMiddleware.single('petPhoto'),
     asyncWrapper(ctrls.addNotice));
 
-router.get('/:category', asyncWrapper(ctrls.getAll));
+router.get('/category/:category', asyncWrapper(ctrls.getAll));
 
 router.get('/:id', asyncWrapper(ctrls.getOne));
 

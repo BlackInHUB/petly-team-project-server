@@ -7,7 +7,6 @@ const petSchema = new mongoose.Schema({
     },
     type: {
         type: String,
-        required: true
     },
     birthday: {
         String,

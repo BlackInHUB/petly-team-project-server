@@ -7,15 +7,15 @@ const authMiddleware = async (req, res, next) => {
     const [tokenType, token] = authorization.split(' ');
 
     if (tokenType !== 'Bearer' || !token) {
-        throw new errors.UnauthorizedError('You need to log in!')
-    };
-
+        next(new errors.UnauthorizedError('You need to log in!'))
+    }
+    
     try {
         const {_id} = jwt.verify(token, process.env.JWT_SECRET);
         const user = await User.findById(_id);
 
         if (!user || !user.token) {
-            throw new errors.UnauthorizedError('You need to log in!')
+            next(new errors.UnauthorizedError('You need to log in!'))
         };
 
         req.user = user;

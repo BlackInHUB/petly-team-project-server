@@ -5,8 +5,6 @@ const services = require('../../services/auth');
 const logout = async (req, res) => {
     const {_id} = req.user;
 
-    console.log(req.user);
-
     const user = await User.findById(_id);
 
     if (!user) {
