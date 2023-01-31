@@ -1,13 +1,14 @@
-const { NotFoundError } = require('../../helpers/errors');
-const {Pet} = require('../../models');
+const { errors } = require('../../helpers');
+const services = require('../../services/user');
 
-const removePet = async(req, res) => {
-    const {id} = req.params;
+const removePet = async (req, res) => {
+    const {_id: owner} = req.user;
+    const {id: _id} = req.params;
     
-    const result = await Pet.findByIdAndRemove(id);
+    const result = await services.removePet({owner, _id});
 
     if (!result) {
-        throw new NotFoundError(`Pet with ${id} not found`)
+        throw new errors.NotFoundError(`Pet with id: '${id}' not found`)
     };
 
     res.status(200).json({

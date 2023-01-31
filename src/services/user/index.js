@@ -1,5 +1,7 @@
 const addPet = require('./addpet');
+const removePet = require('./removePet');
 
 module.exports = {
-    addPet
+    addPet,
+    removePet
 };

@@ -10,8 +10,10 @@ router.post('/',
     uploadMiddleware.single('petPhoto'),
     asyncWrapper(ctrls.addNotice));
 
-router.get('/', asyncWrapper(ctrls.getAll));
+router.get('/:category', asyncWrapper(ctrls.getAll));
 
 router.get('/:id', asyncWrapper(ctrls.getOne));
+
+router.delete('/:id', authMiddleware, asyncWrapper(ctrls.remove));
 
 module.exports = router;

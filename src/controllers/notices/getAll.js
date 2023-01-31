@@ -1,7 +1,7 @@
 const services = require('../../services/notices');
 
 const getAll = async (req, res) => {
-    const {category} = req.query;
+    const {category} = req.params;
 
     const notices = await services.getAll(category);
 
