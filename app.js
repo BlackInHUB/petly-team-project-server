@@ -17,6 +17,7 @@ app.use('/api/auth', routers.auth);
 app.use("/api/news", routers.news);
 app.use("/api/friends", routers.friends);
 app.use('/api/user', routers.user);
+app.use('/api/notices', routers.notices);
 
 app.use(errorHandler);
 
