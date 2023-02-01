@@ -10,12 +10,12 @@ router.post('/',
     uploadMiddleware.single('petPhoto'),
     asyncWrapper(ctrls.addNotice));
 
-router.get('/category/:category', asyncWrapper(ctrls.getAll));
+router.get('/:category', asyncWrapper(ctrls.getAll));
 
-router.get('/:id', asyncWrapper(ctrls.getOne));
+router.get('/details/:id', asyncWrapper(ctrls.getOne));
 
 router.delete('/:id', authMiddleware, asyncWrapper(ctrls.remove));
 
-router.get('/by/user', authMiddleware, asyncWrapper(ctrls.getOwn));
+router.get('/user/own', authMiddleware, asyncWrapper(ctrls.getOwn));
 
 module.exports = router;
