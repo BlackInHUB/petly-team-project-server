@@ -18,4 +18,6 @@ router.delete('/:id', authMiddleware, asyncWrapper(ctrls.remove));
 
 router.get('/user/own', authMiddleware, asyncWrapper(ctrls.getOwn));
 
+router.get('/user/favorites', authMiddleware, asyncWrapper(ctrls.getFavorites));
+
 module.exports = router;

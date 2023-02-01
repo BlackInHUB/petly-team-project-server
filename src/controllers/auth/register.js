@@ -52,9 +52,9 @@ const register = async (req, res) => {
             city: result.city,
             birthday: result.birthday,
             phone: result.phone,
-            avatarUrl: result.avatarUrl
+            avatarUrl: result.avatarUrl,
+            token
         },
-        token
     })
 };
 

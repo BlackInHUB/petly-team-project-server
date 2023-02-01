@@ -1,11 +1,11 @@
 const current = require('./current');
 const addpet = require('./addpet');
 const removePet = require('./removePet');
-const favorite = require('./favorite');
+const favorites = require('./favorites');
 
 module.exports = {
     current,
     addpet,
     removePet,
-    favorite
+    favorites
 };
