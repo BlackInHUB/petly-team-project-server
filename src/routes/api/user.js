@@ -6,7 +6,14 @@ const {authMiddleware, uploadMiddleware} = require('../../middlewares');
 const router = new express.Router();
 
 router.get('/current', authMiddleware, asyncWrapper(ctrls.current));
-router.post('/pet/add', authMiddleware, uploadMiddleware.single('petPhoto'), asyncWrapper(ctrls.addpet));
+
+router.post('/pet/add',
+    authMiddleware,
+    uploadMiddleware.single('petPhoto'),
+    asyncWrapper(ctrls.addpet));
+
 router.delete('/pet/:id', authMiddleware, asyncWrapper(ctrls.removePet));
+
+router.get('/favorites/:id', authMiddleware, asyncWrapper(ctrls.favorite));
 
 module.exports = router;
