@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
 
-const login = async ({_id, username, email}) => {
+const login = async ({_id, name, email}) => {
     const payload = {
         _id,
-        username,
+        name,
         email
     };
 

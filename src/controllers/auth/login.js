@@ -20,12 +20,20 @@ const login = async (req, res) => {
 
     await User.findByIdAndUpdate(user._id, {token});
 
+
     res.status(200).json({
         message: 'Login success',
         user: {
-            token
-        }
-    })
+            id: user._id,
+            email: user.email,
+            name: user.name,
+            phone: user.phone,
+            city: user.city,
+            birthday: user.birthday,
+            avatarUrl: user.avatarUrl
+        },
+        token
+    });
 };
 
 module.exports = login;
