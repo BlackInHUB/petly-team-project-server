@@ -1,10 +1,11 @@
 const { errors } = require('../../helpers');
-const {User} = require('../../models');
+const {User, Pet} = require('../../models');
 const bcrypt = require('bcrypt');
 const services = require('../../services/auth');
 
 const login = async (req, res) => {
     const {email, password} = req.body;
+    console.log(req.body);
 
     const user = await User.findOne({email});
 
@@ -20,6 +21,8 @@ const login = async (req, res) => {
 
     await User.findByIdAndUpdate(user._id, {token});
 
+    const pets = await Pet.find({owner: user._id});
+
 
     res.status(200).json({
         message: 'Login success',
@@ -32,7 +35,8 @@ const login = async (req, res) => {
             birthday: user.birthday,
             avatarUrl: user.avatarUrl
         },
-        token
+        token,
+        pets
     });
 };
 

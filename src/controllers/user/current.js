@@ -9,7 +9,7 @@ const current = async (req, res) => {
     const user = await User.findById(_id, '-password, -token');
     const pets = await Pet.find({owner: _id})
         .skip(skip)
-        .limit(limit);
+        .limit(limit);  
 
     if (!user) {
         throw new errors.UnauthorizedError('You need to log in!');

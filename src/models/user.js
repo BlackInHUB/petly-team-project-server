@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
     },
     avatarUrl: {
         type: String,
-        default: 'http://res.cloudinary.com/dazfphdfk/image/upload/v1674989096/avatar/f7fe99ee-38e2-4d97-8949-ede72af1d996-noAvatar.png.png'
+        default: 'https://res.cloudinary.com/dazfphdfk/image/upload/v1675426917/avatar/bee5de3b-57da-494d-b819-95cb5f2bebd0-defaultUserPhoto.png'
     },
     token: {
         type: String,
