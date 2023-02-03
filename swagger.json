@@ -29,7 +29,7 @@
     },
     {
       "name": "notices",
-      "description": "Operations about notisces"
+      "description": "Operations about notices"
     }
   ],
   "paths": {
@@ -412,12 +412,12 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NoticeReguestBody"
+                "$ref": "#/components/schemas/NoticeRequestBody"
               }
             },
             "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/NoticeReguestBody"
+                "$ref": "#/components/schemas/NoticeRequestBody"
               }
             }
           }
@@ -1017,7 +1017,7 @@
           }
         }
       },
-      "NoticeReguestBody": {
+      "NoticeRequestBody": {
         "type": "object",
         "required": [
           "title",
