@@ -29,7 +29,7 @@
     },
     {
       "name": "notices",
-      "description": "Operations about notices"
+      "description": "Operations about notisces"
     }
   ],
   "paths": {
@@ -198,6 +198,32 @@
         ],
         "summary": "Getting news",
         "description": "",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "skip,",
+            "description": "number of items to skip",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "max records to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1,
+              "default": 6
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Successful operation",
@@ -249,6 +275,32 @@
         "security": [
           {
             "Bearer": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "skip,",
+            "description": "number of items to skip",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "max records to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1,
+              "default": 3
+            }
           }
         ],
         "responses": {
@@ -458,6 +510,30 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "in": "query",
+            "name": "skip,",
+            "description": "number of items to skip",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1,
+              "default": 1
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "description": "max records to return",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "minimum": 1,
+              "default": 8
+            }
           }
         ],
         "responses": {
@@ -643,10 +719,7 @@
             "type": "string"
           },
           "favorites": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Favorites"
-            }
+            "$ref": "#/components/schemas/Favorites"
           }
         }
       },
@@ -692,8 +765,8 @@
             "type": "string",
             "example": "User created"
           },
-          "user": {
-            "$ref": "#/components/schemas/User"
+          "_id": {
+            "type": "string"
           }
         }
       },
@@ -720,6 +793,15 @@
           "message": {
             "type": "string",
             "example": "Login success"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "pets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pet"
+            }
           },
           "token": {
             "type": "string"
@@ -875,11 +957,42 @@
           }
         }
       },
+      "CurrentUser": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "example": "example@email.com"
+          },
+          "city": {
+            "type": "string"
+          },
+          "birthday": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string",
+            "example": "+380671234567"
+          },
+          "avatarUrl": {
+            "type": "string"
+          },
+          "favorites": {
+            "$ref": "#/components/schemas/Favorites"
+          }
+        }
+      },
       "Current": {
         "type": "object",
         "properties": {
           "user": {
-            "$ref": "#/components/schemas/User"
+            "$ref": "#/components/schemas/CurrentUser"
           },
           "pet": {
             "$ref": "#/components/schemas/Pet"
