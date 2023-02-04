@@ -21,7 +21,7 @@ const update = async (req, res) => {
         return res.status(200).json({
             message: 'User updated',
             user: {
-                [fieldname]: avatarUrl
+                avatarUrl
             }
         });
     };
