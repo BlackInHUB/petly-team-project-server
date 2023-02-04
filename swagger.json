@@ -695,7 +695,7 @@
           "_id": {
             "type": "string"
           },
-          "username": {
+          "name": {
             "type": "string"
           },
           "email": {
@@ -726,12 +726,12 @@
       "Registration": {
         "type": "object",
         "required": [
-          "username",
+          "name",
           "email",
           "password"
         ],
         "properties": {
-          "username": {
+          "name": {
             "type": "string"
           },
           "email": {
@@ -811,7 +811,7 @@
       "Update": {
         "type": "object",
         "properties": {
-          "username": {
+          "name": {
             "type": "string"
           },
           "email": {
@@ -963,7 +963,7 @@
           "_id": {
             "type": "string"
           },
-          "username": {
+          "name": {
             "type": "string"
           },
           "email": {
