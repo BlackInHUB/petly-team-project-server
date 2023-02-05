@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
 require("dotenv").config()
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 
 const errorHandler = require('./src/helpers/errorHandler');
 const routers = require('./src/routes/api');
@@ -18,6 +21,7 @@ app.use("/api/news", routers.news);
 app.use("/api/friends", routers.friends);
 app.use('/api/user', routers.user);
 app.use('/api/notices', routers.notices);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(errorHandler);
 
