@@ -3,7 +3,7 @@ const services = require('../../services/user');
 
 const removePet = async (req, res) => {
     const {_id: owner} = req.user;
-    const {_id} = req.params;
+    const {id: _id} = req.params;
     
     const result = await services.removePet({owner, _id});
 

@@ -9,7 +9,7 @@ router.get('/current', authMiddleware, asyncWrapper(ctrls.current));
 
 router.post('/pet/add',
     authMiddleware,
-    uploadMiddleware.single('petPhoto'),
+    uploadMiddleware.single('photoUrl'),
     asyncWrapper(ctrls.addpet));
 
 router.delete('/pet/:id', authMiddleware, asyncWrapper(ctrls.removePet));
