@@ -5,7 +5,6 @@ const services = require('../../services/auth');
 
 const login = async (req, res) => {
     const {email, password} = req.body;
-    console.log(req.body);
 
     const user = await User.findOne({email});
 

@@ -5,7 +5,6 @@ const getFavorites = async (_id) => {
         path: 'favorites',
         model: 'Notice'
     })
-    // .skip(skip).limit(limit);
 
 };
 
