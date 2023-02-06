@@ -772,7 +772,7 @@
       "Registration": {
         "type": "object",
         "required": [
-          "username",
+          "name",
           "email",
           "password"
         ],
