@@ -7,7 +7,7 @@ const router = new express.Router();
 
 router.post('/',
     authMiddleware,
-    uploadMiddleware.single('petPhoto'),
+    uploadMiddleware.single('photoUrl'),
     asyncWrapper(ctrls.addNotice));
 
 router.get('/:category', asyncWrapper(ctrls.getAll));
