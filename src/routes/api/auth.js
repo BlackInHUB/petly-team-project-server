@@ -2,8 +2,16 @@ const express = require('express');
 const router = new express.Router();
 
 const {asyncWrapper} = require('../../helpers');
-const {authMiddleware, uploadMiddleware} = require('../../middlewares');
+const {authMiddleware, uploadMiddleware, passport} = require('../../middlewares');
 const ctrls = require('../../controllers/auth');
+
+router.get('/google', passport.authenticate('google', {
+    scope: ['email', 'profile']
+}));
+
+router.get('/google/callback', passport.authenticate('google', {
+    session: false
+}, asyncWrapper(ctrls.google)))
 
 router.post('/register',
     uploadMiddleware.single('avatar'),
