@@ -3,7 +3,7 @@
   "info": {
     "title": "Swagger Petstore - OpenAPI 3.0",
     "description": "This is a server for a pet store.",
-    "version": "1.0.0"
+    "version": "1.0.1"
   },
   "servers": [
     {
@@ -29,7 +29,7 @@
     },
     {
       "name": "notices",
-      "description": "Operations about notisces"
+      "description": "Operations about notices"
     }
   ],
   "paths": {
@@ -72,6 +72,9 @@
           },
           "409": {
             "description": "Email in use!"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -110,6 +113,9 @@
           },
           "401": {
             "description": "Unauthorized!"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -158,6 +164,9 @@
           },
           "401": {
             "description": "You need to log in!"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -187,6 +196,9 @@
           },
           "401": {
             "description": "You need to log in!"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -237,6 +249,9 @@
           },
           "404": {
             "description": "Not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -261,6 +276,9 @@
           },
           "404": {
             "description": "Not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -316,6 +334,9 @@
           },
           "401": {
             "description": "You need to log in!"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -363,6 +384,9 @@
           },
           "409": {
             "description": "Email in use!"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -403,6 +427,9 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -443,6 +470,9 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -490,6 +520,9 @@
           },
           "401": {
             "description": "You need to log in!"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -549,6 +582,9 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -577,13 +613,16 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NoticeItem"
+                  "$ref": "#/components/schemas/NoticeItemWithContactsOfOwner"
                 }
               }
             }
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -624,6 +663,9 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -653,11 +695,14 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
     },
-    "/api/notices/favorites": {
+    "/api/notices/user/favorites": {
       "get": {
         "tags": [
           "notices"
@@ -682,6 +727,9 @@
           },
           "404": {
             "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -692,10 +740,7 @@
       "User": {
         "type": "object",
         "properties": {
-          "_id": {
-            "type": "string"
-          },
-          "name": {
+          "id": {
             "type": "string"
           },
           "email": {
@@ -706,11 +751,12 @@
             "type": "string"
           },
           "birthday": {
-            "type": "string"
+            "type": "string",
+            "default": "01-01-1900"
           },
           "phone": {
             "type": "string",
-            "example": "+380671234567"
+            "example": "+380000000000"
           },
           "avatarUrl": {
             "type": "string"
@@ -719,7 +765,7 @@
             "type": "string"
           },
           "favorites": {
-            "$ref": "#/components/schemas/Favorites"
+            "$ref": "#/components/schemas/Notices"
           }
         }
       },
@@ -739,22 +785,23 @@
             "example": "example@email.com"
           },
           "password": {
-            "type": "string",
-            "example": "12345"
+            "type": "string"
           },
           "birthday": {
-            "type": "string"
+            "type": "string",
+            "default": "01-01-1900"
           },
           "phone": {
             "type": "string",
-            "example": "+380671234567"
+            "example": "+380000000000"
           },
           "city": {
             "type": "string"
           },
-          "avatar": {
+          "avatarUrl": {
             "type": "string",
-            "format": "binary"
+            "format": "binary",
+            "default": "https://res.cloudinary.com/dazfphdfk/image/upload/v1675426917/avatar/bee5de3b-57da-494d-b819-95cb5f2bebd0-defaultUserPhoto.png"
           }
         }
       },
@@ -765,8 +812,8 @@
             "type": "string",
             "example": "User created"
           },
-          "_id": {
-            "type": "string"
+          "user": {
+            "$ref": "#/components/schemas/UserId"
           }
         }
       },
@@ -782,8 +829,7 @@
             "example": "example@email.com"
           },
           "password": {
-            "type": "string",
-            "example": "12345"
+            "type": "string"
           }
         }
       },
@@ -819,15 +865,15 @@
             "example": "example@email.com"
           },
           "password": {
-            "type": "string",
-            "example": "12345"
+            "type": "string"
           },
           "birthday": {
-            "type": "string"
+            "type": "string",
+            "default": "01-01-1900"
           },
           "phone": {
             "type": "string",
-            "example": "+380671234567"
+            "default": "+380000000000"
           },
           "city": {
             "type": "string"
@@ -949,10 +995,24 @@
           }
         }
       },
-      "Owner": {
+      "UserId": {
         "type": "object",
         "properties": {
-          "id": {
+          "_id": {
+            "type": "string"
+          }
+        }
+      },
+      "UserIdAndContacts": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
             "type": "string"
           }
         }
@@ -970,21 +1030,27 @@
             "type": "string",
             "example": "example@email.com"
           },
-          "city": {
+          "password": {
             "type": "string"
           },
+          "city": {
+            "type": "string",
+            "default": ""
+          },
           "birthday": {
-            "type": "string"
+            "type": "string",
+            "default": "01-01-1900"
           },
           "phone": {
             "type": "string",
-            "example": "+380671234567"
+            "default": "+380000000000"
           },
           "avatarUrl": {
-            "type": "string"
+            "type": "string",
+            "default": "https://res.cloudinary.com/dazfphdfk/image/upload/v1675426917/avatar/bee5de3b-57da-494d-b819-95cb5f2bebd0-defaultUserPhoto.png"
           },
           "favorites": {
-            "$ref": "#/components/schemas/Favorites"
+            "$ref": "#/components/schemas/Notices"
           }
         }
       },
@@ -995,17 +1061,20 @@
             "$ref": "#/components/schemas/CurrentUser"
           },
           "pet": {
-            "$ref": "#/components/schemas/Pet"
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Pet"
+            }
           }
         }
       },
       "Pet": {
         "type": "object",
         "properties": {
-          "name": {
+          "_id": {
             "type": "string"
           },
-          "type": {
+          "name": {
             "type": "string"
           },
           "birthday": {
@@ -1021,7 +1090,7 @@
             "type": "string"
           },
           "owner": {
-            "$ref": "#/components/schemas/Owner"
+            "type": "string"
           }
         }
       },
@@ -1035,21 +1104,22 @@
           "name": {
             "type": "string"
           },
-          "type": {
-            "type": "string"
-          },
           "birthday": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "breed": {
-            "type": "string"
-          },
-          "photo": {
             "type": "string",
-            "format": "binary"
+            "default": ""
+          },
+          "photoUrl": {
+            "type": "string",
+            "format": "binary",
+            "default": "http://res.cloudinary.com/dazfphdfk/image/upload/v1675066555/avatar/07fbd5b5-dce0-4641-b3e0-c65688f7b282-noPetPhoto.png"
           },
           "comments": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           }
         }
       },
@@ -1084,50 +1154,124 @@
             "type": "string"
           },
           "name": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "birthday": {
-            "type": "string"
+            "type": "string",
+            "default": "unknown"
           },
           "breed": {
-            "type": "string"
+            "type": "string",
+            "default": "unknown"
           },
           "location": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "price": {
             "type": "string"
           },
           "sex": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "male",
+              "female"
+            ]
           },
           "photoUrl": {
             "type": "string",
-            "format": "binary"
+            "format": "binary",
+            "default": "http://res.cloudinary.com/dazfphdfk/image/upload/v1675066555/avatar/07fbd5b5-dce0-4641-b3e0-c65688f7b282-noPetPhoto.png"
           },
           "category": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "sell",
+              "lost-found",
+              "for-free"
+            ]
           },
           "comments": {
             "type": "string"
           },
           "owner": {
-            "$ref": "#/components/schemas/Owner"
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        }
+      },
+      "NoticeItemWithContactsOfOwner": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "birthday": {
+            "type": "string",
+            "default": "unknown"
+          },
+          "breed": {
+            "type": "string",
+            "default": "unknown"
+          },
+          "location": {
+            "type": "string",
+            "default": ""
+          },
+          "price": {
+            "type": "string"
+          },
+          "sex": {
+            "type": "string",
+            "enum": [
+              "male",
+              "female"
+            ]
+          },
+          "photoUrl": {
+            "type": "string",
+            "format": "binary",
+            "default": "http://res.cloudinary.com/dazfphdfk/image/upload/v1675066555/avatar/07fbd5b5-dce0-4641-b3e0-c65688f7b282-noPetPhoto.png"
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "sell",
+              "lost-found",
+              "for-free"
+            ]
+          },
+          "comments": {
+            "type": "string"
+          },
+          "owner": {
+            "$ref": "#/components/schemas/UserIdAndContacts"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
           }
         }
       },
       "Notices": {
-        "type": "object",
-        "properties": {
-          "notices": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/NoticeItem"
-            }
-          }
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/NoticeItem"
         }
       },
       "NoticeRequestBody": {
@@ -1143,30 +1287,39 @@
           "name": {
             "type": "string"
           },
-          "type": {
-            "type": "string"
-          },
           "birthday": {
-            "type": "string"
+            "type": "string",
+            "default": "unknown"
           },
           "breed": {
-            "type": "string"
+            "type": "string",
+            "default": "unknown"
           },
           "location": {
-            "type": "string"
+            "type": "string",
+            "default": ""
           },
           "price": {
             "type": "string"
           },
           "sex": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "male",
+              "female"
+            ]
           },
           "photo": {
             "type": "string",
             "format": "binary"
           },
           "category": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "sell",
+              "lost-found",
+              "for-free"
+            ]
           },
           "comments": {
             "type": "string"
@@ -1194,29 +1347,11 @@
           }
         }
       },
-      "FavoriteItem": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string"
-          }
-        }
-      },
-      "Favorites": {
-        "type": "array",
-        "items": {
-          "$ref": "#/components/schemas/FavoriteItem"
-        }
-      },
       "FavoriteResponse": {
         "type": "object",
         "properties": {
-          "message": {
-            "type": "string",
-            "example": "User with id: 'id' favorites updated"
-          },
           "favorites": {
-            "$ref": "#/components/schemas/Favorites"
+            "$ref": "#/components/schemas/Notices"
           }
         }
       }
