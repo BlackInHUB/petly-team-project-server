@@ -32,7 +32,8 @@ const login = async (req, res) => {
             phone: user.phone,
             city: user.city,
             birthday: user.birthday,
-            avatarUrl: user.avatarUrl
+            avatarUrl: user.avatarUrl,
+            favorites: user.favorites
         },
         token,
         pets
