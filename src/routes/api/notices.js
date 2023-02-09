@@ -20,4 +20,6 @@ router.get('/user/own', authMiddleware, asyncWrapper(ctrls.getOwn));
 
 router.get('/user/favorites', authMiddleware, asyncWrapper(ctrls.getFavorites));
 
+router.get('/favorites/:id', authMiddleware, asyncWrapper(ctrls.favoritesToggle));
+
 module.exports = router;

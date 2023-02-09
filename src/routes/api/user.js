@@ -14,6 +14,4 @@ router.post('/pet/add',
 
 router.delete('/pet/:id', authMiddleware, asyncWrapper(ctrls.removePet));
 
-router.get('/favorites/:id', authMiddleware, asyncWrapper(ctrls.favorites));
-
 module.exports = router;

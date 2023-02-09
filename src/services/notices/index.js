@@ -4,6 +4,7 @@ const getOne = require('./getOne');
 const remove = require('./remove');
 const getOwn = require('./getOwn');
 const getFavorites = require('./getFavorites');
+const favoritesToggle = require('./favoritesToggle');
 
 module.exports = {
     addNotice,
@@ -11,5 +12,6 @@ module.exports = {
     getOne,
     remove,
     getOwn,
-    getFavorites
+    getFavorites,
+    favoritesToggle
 };
