@@ -22,18 +22,19 @@ const login = async (req, res) => {
 
     const pets = await Pet.find({owner: user._id});
 
+    const {_id, name, phone, city, birthday, avatarUrl, favorites} = user;
 
     res.status(200).json({
         message: 'Login success',
         user: {
-            _id: user._id,
-            email: user.email,
-            name: user.name,
-            phone: user.phone,
-            city: user.city,
-            birthday: user.birthday,
-            avatarUrl: user.avatarUrl,
-            favorites: user.favorites
+            _id,
+            email,
+            name,
+            phone,
+            city,
+            birthday,
+            avatarUrl,
+            favorites
         },
         token,
         pets

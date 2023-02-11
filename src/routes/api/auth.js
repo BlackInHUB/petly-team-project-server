@@ -17,7 +17,7 @@ router.patch('/update', authMiddleware,
 
 router.get('/logout', authMiddleware, asyncWrapper(ctrls.logout));
 
-router.get('/current', authMiddleware, asyncWrapper(ctrls.current));
+router.get('/profile/:id', authMiddleware, asyncWrapper(ctrls.profile))
 
 module.exports = router;
 

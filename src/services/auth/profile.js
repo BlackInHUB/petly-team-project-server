@@ -1,0 +1,11 @@
+const {User, Pet, Notice} = require('../../models');
+
+const profile = async (id) => {
+    const user = await User.findById(id, {password: 0, birthday: 0, token: 0, favorites: 0, sentMessages: 0, receivedMessages: 0});
+    const pets = await Pet.find({owner: id});
+    const notices = await Notice.find({owner: id});
+
+    return {user, pets, notices};
+};
+
+module.exports = profile;

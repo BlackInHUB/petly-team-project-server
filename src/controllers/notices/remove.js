@@ -1,7 +1,6 @@
 const { errors } = require('../../helpers');
 const services = require('../../services/notices');
 
-
 const remove = async (req, res) => {
     const {_id: owner} = req.user;
     const {id: _id} = req.params;
