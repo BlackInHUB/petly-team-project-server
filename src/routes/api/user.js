@@ -8,6 +8,8 @@ const router = new express.Router();
 
 router.get('/current', authMiddleware, asyncWrapper(ctrls.current));
 
+router.get('/all', asyncWrapper(ctrls.getAll));
+
 router.post('/pet/add',
     authMiddleware,
     uploadMiddleware.single('photoUrl'),
