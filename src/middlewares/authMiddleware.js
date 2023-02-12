@@ -7,7 +7,7 @@ const authMiddleware = async (req, res, next) => {
     const [tokenType, token] = authorization.split(' ');
 
     if (tokenType !== 'Bearer' || !token) {
-        // next(new errors.UnauthorizedError('You need to log in!'))
+        next(new errors.UnauthorizedError('You need to log in!'))
         return;
     };
     
@@ -16,7 +16,7 @@ const authMiddleware = async (req, res, next) => {
         const user = await User.findById(_id);
 
         if (!user || !user.token) {
-            // next(new errors.UnauthorizedError('You need to log in!'))
+            next(new errors.UnauthorizedError('You need to log in!'))
             return;
         };
 
