@@ -44,10 +44,7 @@ const userSchema = new mongoose.Schema({
     },
     messages: {
         type: [
-            {
-                _id: { type: mongoose.Schema.Types.ObjectId, ref: "Message" },
-                readed: {type: mongoose.Schema.Types.Boolean, ref: "Message"}
-            },
+            {type: mongoose.Schema.Types.ObjectId, ref: "Message"}
         ]
     }
 }, {versionKey: false});

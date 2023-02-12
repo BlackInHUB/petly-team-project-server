@@ -2,11 +2,11 @@ const {User} = require('../../models');
 
 const get = async (userId) => {
     const messages = await User.findById(userId, {messages: 1, _id: 0}).populate({
-        path: 'messages._id',
+        path: 'messages',
         model: 'Message',
     })
 
     return messages;
 };
 
-module.exports = get;   
+module.exports = get;
