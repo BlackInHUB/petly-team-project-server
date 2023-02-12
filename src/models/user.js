@@ -42,24 +42,12 @@ const userSchema = new mongoose.Schema({
             { type: mongoose.Schema.Types.ObjectId, ref: "Notice" }
         ]
     },
-    sentMessages: {
+    messages: {
         type: [
             {
                 _id: { type: mongoose.Schema.Types.ObjectId, ref: "Message" },
                 readed: {type: mongoose.Schema.Types.Boolean, ref: "Message"}
-
             },
-            
-        ]
-    },
-    receivedMessages: {
-        type: [
-            {
-                _id: { type: mongoose.Schema.Types.ObjectId, ref: "Message" },
-                readed: {type: mongoose.Schema.Types.Boolean, ref: "Message"}
-
-            },
-            
         ]
     }
 }, {versionKey: false});

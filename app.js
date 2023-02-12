@@ -21,6 +21,7 @@ app.use("/api/news", routers.news);
 app.use("/api/friends", routers.friends);
 app.use('/api/user', routers.user);
 app.use('/api/notices', routers.notices);
+app.use('/api/messages', routers.messages);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(errorHandler);
