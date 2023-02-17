@@ -16,10 +16,12 @@ router.get('/details/:id', asyncWrapper(ctrls.getOne));
 
 router.delete('/:id', authMiddleware, asyncWrapper(ctrls.remove));
 
-router.get('/user/own', authMiddleware, asyncWrapper(ctrls.getOwn));
+router.get('/own', authMiddleware, asyncWrapper(ctrls.getOwn));
 
-router.get('/user/favorites', authMiddleware, asyncWrapper(ctrls.getFavorites));
+router.get('/favorites', authMiddleware, asyncWrapper(ctrls.getFavorites));
 
 router.get('/favorites/:id', authMiddleware, asyncWrapper(ctrls.favoritesToggle));
+
+router.patch('/update/:id', authMiddleware, asyncWrapper(ctrls.update));
 
 module.exports = router;

@@ -19,7 +19,7 @@ app.use(morgan('tiny'));
 app.use('/api/auth', routers.auth);
 app.use("/api/news", routers.news);
 app.use("/api/friends", routers.friends);
-app.use('/api/user', routers.user);
+app.use('/api/pets', routers.pets);
 app.use('/api/notices', routers.notices);
 app.use('/api/messages', routers.messages);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));

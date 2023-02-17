@@ -19,5 +19,9 @@ router.get('/logout', authMiddleware, asyncWrapper(ctrls.logout));
 
 router.get('/profile/:id', authMiddleware, asyncWrapper(ctrls.profile))
 
+router.get('/current'), authMiddleware, asyncWrapper(ctrls.current);
+
+router.get('/users', asyncWrapper(ctrls.getUsers));
+
 module.exports = router;
 

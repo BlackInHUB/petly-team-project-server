@@ -1,4 +1,4 @@
-const services = require('../../services/user');
+const services = require('../../services/pets');
 const cloudUpload = require('../../services/cloudUpload');
 
 const addpet = async (req, res) => {

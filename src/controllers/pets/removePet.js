@@ -1,5 +1,5 @@
 const { errors } = require('../../helpers');
-const services = require('../../services/user');
+const services = require('../../services/pets');
 
 const removePet = async (req, res) => {
     const {_id: owner} = req.user;

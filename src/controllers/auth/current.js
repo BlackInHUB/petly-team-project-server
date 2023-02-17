@@ -8,9 +8,7 @@ const current = async (req, res) => {
     const pets = await Pet.find({owner: _id});
 
     if (!user) {
-        res.status(401).json({
-            message: 'Unauthorized'
-        });
+        throw new errors.UnauthorizedError('You need to login')
     };
 
     res.status(200).json({user, pets});
