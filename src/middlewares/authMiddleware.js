@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const { errors } = require('../helpers');
 
 const authMiddleware = async (req, res, next) => {
+    console.log('AMW')
     const {authorization = ''} = req.headers;
     const [tokenType, token] = authorization.split(' ');
 
